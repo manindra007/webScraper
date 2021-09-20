@@ -23,7 +23,6 @@ type detail struct {
 }
 
 func main() {
-	fmt.Println("hello world")
 	fname := "data.csv"
 	file, err := os.Create(fname)
 	if err != nil {
@@ -33,8 +32,7 @@ func main() {
 	defer file.Close()
 	writer := csv.NewWriter(file)
 	defer writer.Flush()
-	// url := "https://www.amazon.com/Samsung-Electronics-Unlocked-Smartphone-Long-Lasting/dp/B08BX7N9SK/ref=sr_1_2?dchild=1&keywords=mobile&qid=1632046922&sr=8-2"
-	url := "https://www.amazon.com/Razer-Blade-Gaming-Laptop-2021/dp/B0997K1SRF/ref=sr_1_4?dchild=1&keywords=laptop&qid=1632045838&sr=8-4"
+	url := os.Args[1]
 	prod := Firstapi(url)
 	var d detail
 	d.Url = url
